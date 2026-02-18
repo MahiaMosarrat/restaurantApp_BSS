@@ -1,0 +1,85 @@
+/* Modal Container Styling */
+.delete-order-modal .ant-modal-content {
+    border-radius: 20px !important;
+    padding: 24px 32px !important; /* Tightened padding for a smaller look */
+}
+
+.modal-inner-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Flexbox: Icon and Title on one line */
+.modal-header-inline {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 4px;
+}
+
+.warning-icon {
+    font-size: 24px;
+    color: #FAAD14 !important; /* The yellow/orange from your image */
+}
+
+.modal-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #262626;
+}
+
+/* Subtitle: Pushed to the right to align under the title */
+.modal-subtitle {
+    margin-left: 36px; /* icon width (24px) + gap (12px) */
+    color: #595959;
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+/* Button Group */
+.modal-button-container {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+/* Button Styles based on image */
+.btn-cancel-custom {
+    background-color: #EAEAEA !important;
+    border: none !important;
+    color: #000 !important;
+    font-weight: 600;
+    height: 48px !important;
+    width: 140px;
+    border-radius: 10px !important;
+}
+
+.btn-delete-custom {
+    background-color: #E12D2D !important;
+    border: none !important;
+    color: #fff !important;
+    font-weight: 600;
+    height: 48px !important;
+    width: 140px;
+    border-radius: 10px !important;
+}
+
+/* Hover effects */
+.btn-cancel-custom:hover { background-color: #dfdfdf !important; }
+.btn-delete-custom:hover { background-color: #c92525 !important; }
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .delete-order-modal .ant-modal-content {
+        padding: 20px !important;
+        margin: 0 10px;
+    }
+    .modal-button-container {
+        flex-direction: row;
+        width: 100%;
+    }
+    .btn-cancel-custom, .btn-delete-custom {
+        width: 50%;
+    }
+}

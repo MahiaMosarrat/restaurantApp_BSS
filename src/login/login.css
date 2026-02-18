@@ -1,0 +1,199 @@
+.login-row {
+    display: flex;
+    min-height: 100vh;
+    margin: 0;
+    width: 100%;
+}
+
+.login-left-column {
+    display: none !important;
+}
+
+.login-right-column {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #E6FEED;
+    padding: 20px;
+}
+
+@media (min-width: 1200px) {
+    .login-left-column {
+        display: flex !important;
+        width: 66.66666667%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .login-right-column {
+        width: 33.33333333%;
+    }
+}
+
+/* Slider Container */
+.login-info-container {
+    height: 600px;
+    padding: 2rem;
+    width: 500px;
+    max-width: 90%;
+    background-color: #f1f8f1;
+    border-radius: 12px;
+    box-shadow:0 12px 15px -2px #0c0c0c80;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ant-carousel .slick-dots-bottom {
+    bottom: 30px !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.ant-carousel .slick-dots li {
+    width: 30px !important;
+    height: 4px !important;
+    margin: 0 4px !important;
+}
+
+.ant-carousel .slick-dots li button {
+    width: 30px !important;
+    height: 4px !important;
+    background-color: #e5e7eb !important;
+    border: 1px !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+}
+
+/* 🔥 Remove Slick's default dot layers */
+.ant-carousel .slick-dots li button::before,
+.ant-carousel .slick-dots li button::after {
+    display: none !important;
+    content: none !important;
+
+}
+
+/* Active = FULL BLACK */
+.ant-carousel .slick-dots li.slick-active button {
+    background-color: #101010 !important;
+}
+
+/* Hover */
+.ant-carousel .slick-dots li:hover button {
+    background-color: #9ca3af !important;
+}
+
+/* Typography matching image 1 */
+.slider-heading {
+    font-weight: 700;
+    margin-top: 1.5rem;
+    color: #212121;
+    font-size: 30px;
+    line-height: 2.25rem;
+    text-align: center;
+}
+
+.slider-description {
+    color: #757575;
+    font-size: 20px;
+    line-height: 1.6rem;
+    text-align: center;
+    margin-top: 1rem;
+    padding: 0 10px;
+}
+
+.custom-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px !important;
+    height: 20px !important;
+    border: 2px solid #d7d8d7;
+    border-radius: 30%;
+    background-color: #fff;
+    cursor: pointer;
+    display: grid;
+    place-content: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.custom-checkbox:checked {
+    background-color: #43a047;
+    border-color: #43a047;
+
+}
+
+/* Adds the white checkmark inside when clicked */
+.custom-checkbox:checked::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    background-color: white;
+    transform: scale(1.2);
+}
+
+.login-submit-btn:hover:not(:disabled) {
+    background-color: #388e3c !important;
+}
+
+.login-submit-btn:active {
+    transform: scale(0.98);
+}
+
+/* --- Input Field Hover and Focus (Image 1 Effect) --- */
+.login-input:hover,
+.login-input:focus {
+    border-color: #4CAF50 !important;
+    /* The green border seen in your image */
+    box-shadow: 0 0 4px rgba(76, 175, 80, 0.2) !important;
+}
+
+/* --- Password Toggle Icon Style --- */
+.password-toggle-icon {
+    color: #66bb6a;
+    font-size: 22px;
+    cursor: pointer;
+    transition: color 0.2s;
+
+}
+
+.password-toggle-icon:hover {
+    background-color: #EFF8F0;
+    padding: 0 5px;
+
+}
+
+@media (max-width: 433px) {
+  
+    .login-form-header h1 {
+        font-size: 24px !important;
+    }
+
+    .login-submit-btn {
+        height: 40px !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px !important; 
+    }
+    
+    .login-form-container {
+        padding: 20px 25px !important;
+    }
+}
+
+.toast-error-pulse {
+    animation: pulse-red 1.5s infinite;
+    border: 2px solid #dc3545 !important;
+    background-color: #fff8f8 !important;
+}
+
+@keyframes pulse-red {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+    100% { transform: scale(1); }
+}

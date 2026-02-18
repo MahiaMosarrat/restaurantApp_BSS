@@ -1,0 +1,308 @@
+.tm-overlay {
+    position: fixed; inset: 0; z-index: 10000;
+    background-color: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tm-container {
+   background-color: white;
+    width: 90vw; /* Use more width on smaller screens */
+    max-width: 800px; /* Adjusted to look more like the modal in the image */
+    border-radius: 16px;
+    overflow: hidden;
+    filter: drop-shadow(0 10px 8px rgba(0 0 0 / .04)) drop-shadow(0 4px 3px rgb(0 0 0 / .1));;
+}
+
+.tm-header{
+    padding: 16px 24px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tm-header-title {
+    font-weight: 600;
+    color: #374151;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+}
+
+.title-icon {color: #66bb6a;}
+
+.tm-body{padding: 32px;}
+
+.tm-top-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: stretch;
+    /* margin-bottom: 30px; */
+}
+
+.tm-left-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+}
+
+.tm-right-upload{
+    height: 100%;
+}
+
+.tm-upload-dashed-box {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100;
+}
+
+.tm-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; 
+}
+.tm-dashed-zone {
+    height: 100%;
+    border: 1px dashed #d1d5db;
+    border-radius: 12px;
+    background: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.upload-plus {
+    font-size: 32px; 
+    color: #bfbfbf; 
+    margin-bottom: 10px;
+}
+
+.upload-text {
+    font-size: 13px;
+    color: #8c8c8c;
+    font-weight: 500;
+}
+
+.tm-preview-card {
+    width: 140px;
+    height: 140px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #f0f0f0;
+    background: white;
+}
+
+.tm-preview-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tm-large-preview-img {
+    max-width: 95vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+    animation: zoomIn 0.3s ease-out;
+}
+
+.tm-input {
+    width: 100%;
+    height: 48px; /* Taller input like the image */
+    padding: 0 16px;
+    border: 1px solid #dcdfe6;
+    border-radius: 10px !important; /* Specific rounded corners */
+    font-size: 15px;
+    color: #606266;
+    transition: all 0.3s;
+    outline: none;
+}
+
+.tm-input::placeholder {
+    color: #c0c4cc; /* Lighter placeholder color */
+}
+
+.tm-input:focus {
+    border-color: #66bb6a;
+    box-shadow: 0 0 0 2px rgba(102, 187, 106, 0.1);
+}
+
+/* Specific styling for the label font-size and weight */
+.tm-label {
+    font-size: 15px;
+    font-weight: 500;
+    color: #303133;
+    margin: 0;
+}
+
+.tm-required {
+    color: #f56c6c;
+    margin-right: 4px;
+    font-weight: bold;
+}
+@keyframes zoomIn {
+    from{
+        transform: scale(0.85);
+        opacity: 0;
+    }
+    to{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.tm-mask-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5 );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    color: white;
+    font-size: 24px;
+}
+
+.tm-preview-card:hover .tm-mask-overlay {opacity: 1;}
+
+.tm-footer {
+    padding: 20px 24px;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.tm-btn-cancel {
+    padding: 10px 24px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    background: white;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.tm-btn-submit {
+    padding: 10px 24px;
+    border-radius: 8px;
+    border: none;
+    background: #66bb6a;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.tm-full-view {
+    position: fixed;
+    inset: 0;
+    z-index: 20000;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tm-full-view img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.input-error {
+    border-color: #ff4d4f !important;
+}
+
+.error-text {
+    color: #ff4d4f;
+    font-size: 11px;
+    margin-top: 4px;
+    text-align: left;
+}
+
+@media (max-width: 992px) {
+    .tm-top-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+    }
+    
+    .tm-dashed-zone {
+        height: 200px !important; /* Fixed height for image zone on mobile */
+    }
+
+    .tm-container {
+        width: 95vw;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}
+
+/* CHANGE: Exact Image Upload Zone Design */
+.tm-dashed-zone {
+    height: 100%;
+    min-height: 220px;
+    border: 1px dashed #d1d5db;
+    border-radius: 12px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-inner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    /* CHANGE: This creates the small centered box look */
+    border: 1px solid #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    width: 140px;
+}
+
+.upload-plus-large {
+    font-size: 32px;
+    color: #8c8c8c;
+    line-height: 1;
+}
+
+.upload-instruction-text {
+    font-size: 14px;
+    color: #595959;
+    text-align: center;
+}
+
+/* Footer Button Styles to match image */
+.tm-btn-cancel {
+    padding: 10px 24px;
+    border-radius: 8px;
+    border: 1px solid #d9d9d9;
+    background: #fff;
+    font-size: 16px;
+}
+
+.tm-btn-submit {
+    padding: 10px 24px;
+    border-radius: 8px;
+    background: #66bb6a;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+}

@@ -1,0 +1,785 @@
+.ant-layout-content {
+    height: 100vh;
+    padding: 1.5rem;
+}
+
+.table-page-container {
+    height: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    border-radius: 16px;
+    background-color: #F0F2F5;
+    filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+}
+
+.table-page-wrapper {
+
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    background: white;
+    border: 1px solid #f0f0f0;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* HIDE SCROLLBARS BUT KEEP SCROLLING */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Opera */
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+}
+
+/* Sidebar & Content Panes */
+.table-sidebar-container {
+    width: 350px;
+    height: 100%;
+    background-color: #f6faf7;
+    flex-shrink: 0;
+}
+
+.content-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: background-color 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.content-container.has-foods {
+    background-color: white;
+}
+
+.food-list-scroll {
+    height: calc(100% - 70px);
+    overflow-y: auto;
+}
+
+/* Sticky Headers */
+.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: white;
+    height: 70px;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sticky-header h2 {
+    font-weight: 400;
+    color: #262626;
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+
+.table-card-wraper {
+    background-color: #ffffff;
+    padding: 0 35px;
+}
+
+.table-card {
+    width: 100%;
+    min-width: 200px;
+    height: 230px;
+    margin-bottom: 10px;
+    border: 1px solid #22C55E;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.table-card:hover {
+    background-color: #E8F5E9;
+}
+
+.table-card.active {
+    border: 2px solid #22C55E !important;
+    /* Bold green like image 1 */
+    background-color: #f0fdf4 !important;
+}
+
+.table-image-wrapper {
+    height: 150px;
+    width: 65%;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 4px 6px rgba(72, 70, 70, 0.1);
+}
+
+.table-image {
+    height: 100%;
+    width: 100%;
+    max-width: 180px;
+    object-fit: cover;
+}
+
+.table-info-text {
+    font-weight: 400;
+    color: #202427;
+    margin: 0;
+    font-size: 20px;
+}
+
+.sticky-header-foodlist {
+    height: 4rem;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.foodlist-header-text {
+    color: #262626;
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+
+/* Container for the search bar */
+.custom-search-bar {
+    padding-right: 0 !important;
+    border-radius: 8px !important;
+    overflow: hidden;
+    height: 40px;
+}
+
+/* The green icon button */
+.search-icon-btn {
+    background-color: #5CB660;
+    color: white;
+    height: 40px;
+    width: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect as requested */
+.search-icon-btn:hover {
+    color: #000000;
+}
+
+.search-icon-btn .anticon {
+    font-size: 1.2rem;
+}
+
+.custom-search-bar:hover {
+    border-color: #21c45d;
+}
+
+.food-info-container {
+    flex-grow: 1;
+    padding-left: 35px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.food-card {
+    width: 100%;
+    height: 220px !important;
+    /* Increased card height to allow a bigger image */
+    background: white;
+    border: 1px solid #22c55e;
+    border-radius: 12px;
+    padding: 20px !important;
+    margin-bottom: 12px;
+    position: relative;
+    /* REQUIRED for button anchoring */
+    display: flex;
+    align-items: center;
+    /* Vertically centers image and text */
+}
+
+.food-card:hover {
+    background-color: #E8F5E9;
+}
+
+.food-image-large {
+    width: 200px !important;
+    height: 200px !important;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.food-name-title {
+    font-size: 24px !important;
+    font-weight: 500 !important;
+    margin-bottom: 5px !important;
+    margin-left: 10px !important;
+    color: #1f2937;
+    margin-top: 0px !important;
+}
+
+.food-desc-text {
+    font-size: 18px;
+    color: #050505;
+    margin-top: 0px !important;
+    margin-left: 10px !important;
+    margin-bottom: 15px !important;
+}
+
+.food-price-block {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px !important;
+    margin-top: 10px;
+}
+
+.food-old-price {
+    text-decoration: line-through;
+    color: #ef4444;
+    font-size: 18px;
+}
+
+.food-new-price {
+    color: #15803d;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.food-action-right {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+}
+
+.add-to-cart-button {
+    cursor: pointer;
+    height: 50px;
+    width: 152px;
+    border-radius: 6px;
+    color: #fff;
+    background: #43a047;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    font-weight: 400;
+    transition: background 0.3s;
+
+}
+
+.add-to-cart-button:hover {
+    background-color: #388E3C;
+}
+
+
+/* Glass Effect for Background (Image 5) */
+.ant-drawer-mask {
+    background-color: rgba(0, 0, 0, 0.45) !important;
+    backdrop-filter: blur(4px);
+}
+
+/* Drawer Header (Green Border & Title) */
+.custom-cart-drawer .ant-drawer-header {
+    border-bottom: 2px solid #21c45d !important;
+    padding: 16px 24px;
+}
+
+.cart-header-custom {
+    color: #0a612a;
+    font-weight: 400;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.custom-cart-drawer .ant-drawer-header-title {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.custom-cart-drawer .ant-drawer-close {
+    margin-right: 0;
+    padding-right: 0;
+
+}
+
+.drawer-inner-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.empty-cart-centered {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty-cart-centered h2 {
+    font-size: 28px;
+    color: #374151;
+    font-weight: 600;
+}
+
+/* Cart Item Rows (Image 2 & 3) */
+.cart-item-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.cart-item-left {
+    display: flex;
+    gap: 12px;
+}
+
+.cart-item-info .item-name {
+    font-weight: 600;
+    font-size: 16px;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.qty-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #6b7280;
+}
+
+.cart-item-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+/* Delete Button Hover (Image 3) */
+.delete-icon-btn {
+    border-color: #d9d9d9;
+    color: #595959;
+    transition: all 0.3s;
+}
+
+.delete-icon-btn:hover {
+    background-color: #ff4d4f !important;
+    color: white !important;
+    border-color: #ff4d4f !important;
+}
+
+/* Quantity Input Arrows (Image 4) */
+.qty-input-arrows {
+    width: 80px;
+}
+
+.qty-input-arrows .ant-input-number-handler-wrap {
+    opacity: 1;
+    /* Always show arrows */
+}
+
+/* Footer Section (Image 2) */
+.cart-footer-section {
+    border-top: 2px solid #21c45d;
+    margin-top: auto;
+    padding-top: 10px;
+}
+
+.subtotal-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: #f0fdf4;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.phone-input-container {
+    margin: 15px 0;
+}
+
+.phone-input-container label {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    color: #6b7280;
+    margin-bottom: 5px;
+}
+
+.confirm-order-btn {
+    background-color: #43a047 !important;
+    border-color: #43a047 !important;
+    height: 50px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.confirm-order-btn:hover {
+    background-color: #2e7d32 !important;
+}
+
+.cart-floating-wrapper {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 500;
+}
+
+
+.cart-btn {
+    height: 50px;
+    width: 50px;
+    background: white;
+    border: 2px solid #e8f5e9;
+    border-radius: 10px;
+    font-size: 30px;
+    color: #00230b;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.placeholder-text {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+}
+
+.placeholder-img {
+    width: 13rem;
+    animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: scale(1.01);
+    }
+}
+
+.placeholder-wrapper {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    background-color: #E8F5E9;
+    border-radius: 12px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+@media (max-width: 1399px) {
+    .table-page-wrapper {
+        flex-direction: column;
+    }
+
+    .table-sidebar-container {
+        width: 100% !important;
+        height: auto !important;
+        border-right: none;
+        flex-shrink: 0;
+    }
+
+    .sticky-header {
+        height: 25px !important;
+        /* Reduced from 70px */
+        padding: 0 1rem !important;
+    }
+
+    .sticky-header h2 {
+        font-size: 1rem !important;
+        margin-bottom: 0 !important;
+    }
+
+    .table-card-wraper {
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        padding: 10px 20px !important;
+        gap: 12px;
+        white-space: nowrap;
+    }
+
+    .table-card {
+        min-width: 160px;
+        height: 140px !important;
+        padding: 8px !important;
+        margin-bottom: 8px !important;
+    }
+
+    /* --- Food Card Redesign (Fixed Spacing & Big Image) --- */
+    .food-card {
+        position: relative;
+        display: flex;
+        min-height: 220px;
+        /* Increased to fit large image */
+        border: 1px solid #22c55e;
+        border-radius: 12px;
+        padding: 20px !important;
+        margin-bottom: 16px;
+        align-items: center;
+    }
+
+    .food-image-large {
+        width: 180px !important;
+        height: 180px !important;
+        border-radius: 12px;
+        object-fit: cover;
+    }
+
+    .food-info-container {
+        flex-grow: 1;
+        padding-left: 40px !important;
+        /* Increased space between image and text */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .food-action-right {
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+        display: flex;
+    }
+
+    .table-info-text {
+        white-space: normal !important;
+        word-wrap: break-word;
+        text-align: center;
+        line-height: 1.2;
+        font-size: 16px !important;
+        /* Slightly smaller for better fit */
+        margin-top: 8px !important;
+    }
+
+    .table-image-wrapper {
+        width: 75px !important;
+        height: 75px !important;
+    }
+
+}
+
+/* --- Mobile View Adjustments (767px and below) --- */
+@media (max-width: 768px) {
+    .ant-layout-content {
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .content-container {
+        margin-top: 5px;
+    }
+
+    /* 2. Page Container & Wrapper: Must be flex containers to distribute space */
+    .table-page-container,
+    .table-page-wrapper {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* 3. Table Selection (The Top Part): Remove fixed heights that cause overlap */
+    .table-sidebar-container {
+        max-height: 180px;
+        overflow-x: auto;
+    }
+
+    .mobile-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        z-index: 1000;
+    }
+
+    /* 1. Keep it as a Row so it stays short (not a tall column) */
+    .food-card {
+        flex-direction: row !important;
+        height: 140px !important;
+        /* Fixed height to keep it slim */
+        min-height: 140px !important;
+        align-items: flex-start !important;
+        padding: 10px !important;
+        position: relative;
+        gap: 12px;
+    }
+
+    /* 2. Make the image much smaller to fit the slim card */
+    .food-img-wrapper {
+        height: 110px !important;
+        width: 110px !important;
+        flex-shrink: 0;
+    }
+
+    .food-image-large {
+        width: 110px !important;
+        height: 110px !important;
+        border-radius: 8px;
+    }
+
+    /* 3. Adjust text sizes to fit the smaller container */
+    .food-info-container {
+        padding-left: 0 !important;
+        text-align: left !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 100%;
+    }
+
+    .food-name-title {
+        font-size: 18px !important;
+        /* Smaller text */
+        margin: 0 !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .food-desc-text {
+        font-size: 13px !important;
+        /* Smaller text */
+        margin: 4px 0 !important;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        /* Show only 2 lines of desc */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .food-price-block {
+        margin: 0 !important;
+    }
+
+    .food-new-price {
+        font-size: 16px !important;
+    }
+
+    /* 4. Fix Button to Bottom-Right exactly like Desktop */
+    .food-action-right {
+        position: absolute !important;
+        bottom: 10px !important;
+        right: 10px !important;
+        left: auto !important;
+        transform: none !important;
+        width: auto !important;
+    }
+
+    .add-to-cart-button {
+        width: 110px !important;
+        /* Smaller button */
+        height: 34px !important;
+        /* Shorter button */
+        font-size: 13px !important;
+        padding: 0 !important;
+    }
+}
+
+@media (max-width: 450px) {
+    .cart-item-row {
+        gap: 6px;
+    }
+
+    .cart-item-left img {
+        width: 90px !important;
+        height: 80px !important;
+    }
+
+    .cart-item-info .item-name {
+        font-size: 12px;
+
+    }
+
+    .qty-input {
+        width: 45px !important;
+    }
+
+    .qty-input .ant-input-number {
+        width: 45px !important;
+    }
+
+    .item-price {
+        font-size: 14px;
+
+    }
+}
+
+@media (max-width: 430px) {
+    .foodlist-header-text {
+        font-size: 14px;
+        color: #000000;
+    }
+
+    .search-wrapper {
+        width: 220px;
+    }
+}
+
+@media (max-width: 400px) {
+    .foodlist-header-text {
+        font-size: 12px;
+        color: #4d4747;
+        font-weight: 500;
+    }
+
+    .search-wrapper {
+        width: 180px;
+    }
+}
+
+@media (max-width:390px) {
+    .add-to-cart-button {
+        height: 45px;
+        width: 75px !important;
+    }
+     .cart-item-left img {
+        width: 80px !important;
+        height: 70px !important;
+    }
+    .qty-input {
+        width: 40px !important;
+    }
+
+    .qty-input .ant-input-number {
+        width: 40px !important;
+    }
+
+    .item-price {
+        font-size: 12px;
+        font-weight: 500;
+    }
+    .cart-item-left{
+        gap:0px !important
+    }
+}

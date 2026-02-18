@@ -1,0 +1,298 @@
+.employee-final-modal .ant-modal-content {
+    border-radius: 16px !important;
+    padding: 0 !important;
+    overflow: hidden;
+    /* Double shadow logic */
+    box-shadow: 0 9px 28px 8px #0000000d, 0 6px 16px #00000014, 0 3px 6px -4px #0000001f !important;
+}
+
+/* Header bottom border */
+.employee-final-modal .ant-modal-header {
+    padding: 16px 24px;
+    margin-bottom: 0;
+    border-bottom: 1px solid #f0f0f0 !important;
+}
+
+.modal-header-container {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.modal-form-wrapper {
+    padding: 24px 32px;
+}
+
+
+.form-grid-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Two main columns */
+    gap: 40px;
+    margin-bottom: 24px;
+    align-items: stretch;
+}
+
+.inputs-column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.image-column-large {
+    border: 1px dashed #d1d5db;
+    border-radius: 12px;
+    background: #fafafa;
+    min-height: 200px;
+    display: flex !important;
+    justify-content: center !important;
+    /* Centers horizontally */
+    align-items: center !important;
+    /* Centers vertically */
+    height: 100%;
+    /* Ensures it takes full column height */
+    width: 100%;
+}
+
+.upload-zone-wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.upload-placeholder-dashed {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* The small centered card for the employee photo */
+.employee-preview-card {
+    width: 140px;
+    height: 140px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #f0f0f0;
+    background: white;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.img-card-fit {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* The mask with Eye and Trash icons that appears on hover */
+.employee-mask-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: white;
+    font-size: 20px;
+}
+
+.employee-preview-card:hover .employee-mask-overlay {
+    opacity: 1;
+}
+
+
+.upload-inner-content {
+    border: 1px solid #d9d9d9;
+    background: #fff;
+    padding: 20px 18px;
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upload-icon-plus {
+    font-size: 24px;
+    color: #8c8c8c;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.upload-instruction {
+    font-size: 12px;
+    color: #595959;
+    font-weight: 500;
+}
+
+
+.form-group-item {
+    width: 100%;
+}
+
+.form-group-item label {
+    display: block;
+    font-size: 13px;
+    color: #4b5563;
+    margin-bottom: 6px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.req {
+    color: #ef4444;
+    margin-right: 4px;
+}
+
+.form-group-item input,
+.full-width-control {
+    width: 100% !important;
+    height: 40px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px !important;
+    padding: 8px 12px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-group-item input:focus {
+    border-color: #66bb6a;
+}
+
+.form-row-grid {
+    display: grid;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.form-row-grid.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.form-row-grid.grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+
+/* Footer top border */
+.modal-footer-action-bar {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 10px;
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.btn-secondary {
+    padding: 8px 24px;
+    border: 1px solid #d1d5db;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #374151;
+    font-weight: 500;
+}
+
+.btn-primary-green {
+    padding: 8px 24px;
+    border: none;
+    background: #66bb6a;
+    color: white;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-primary-green:hover {
+    background: #55a659;
+}
+
+
+/* Portal for the large zoomed image */
+.fm-full-view {
+    position: fixed;
+    inset: 0;
+    z-index: 20000;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fm-large-preview-img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 810px) {
+
+    /* Stack the top grid (Name inputs + Image) */
+    .form-grid-top {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px;
+    }
+
+    /* Stack all other grid rows into a single column */
+    .form-row-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+
+    .btn-secondary,
+    .btn-primary-green {
+        width: 100%;
+        /* Make buttons full width for easier clicking */
+        max-width: 300px;
+        /* But don't let them get too wide */
+    }
+
+    /* Ensure the modal content is scrollable if it gets too long */
+    .employee-final-modal .ant-modal-content {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .btn-secondary,
+    .btn-primary-green {
+        height: 32px !important;
+        font-size: 10px !important;
+        max-width: 100%;
+        padding: 2px;
+    }
+
+    .modal-header-container {
+        font-size: 16px !important;
+    }
+
+    .form-group-item label {
+        font-size: 13px !important;
+    }
+
+    .upload-inner-content {
+        height: 120px;
+        width: 120px;
+    }
+
+
+}
