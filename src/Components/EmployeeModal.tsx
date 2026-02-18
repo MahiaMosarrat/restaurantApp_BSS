@@ -82,46 +82,51 @@ const EmployeeModal: React.FC<EmployeeModalProps> = ({ isOpen, onClose, onSucces
         }
     };
 
-   const handleSubmit = async () => {
-    setLoading(true);
-    try {
-        // CONSTRUCT FLAT PAYLOAD (Matches Swagger Schema)
-        const payload = {
-            designation: formData.designation,
-            joinDate: formData.joinDate,
-            email: formData.email,
-            phoneNumber: formData.phoneNumber,
-            firstName: formData.firstName,
-            middleName: formData.middleName || "",
-            lastName: formData.lastName,
-            fatherName: formData.fatherName,
-            motherName: formData.motherName,
-            spouseName: formData.spouseName,
-            dob: formData.dob,
-            nid: formData.nid,
-            genderId: Number(formData.genderId), // Must be a number
-            image: formData.image || "",
-            base64: formData.base64 || ""
-        };
+    const handleSubmit = async () => {
+        setLoading(true);
+        try {
+            // CONSTRUCT FLAT PAYLOAD (Matches Swagger Schema)
+            const payload = {
+                designation: formData.designation,
+                joinDate: formData.joinDate,
+                email: formData.email,
+                phoneNumber: formData.phoneNumber,
+                firstName: formData.firstName,
+                middleName: formData.middleName || "",
+                lastName: formData.lastName,
+                fatherName: formData.fatherName,
+                motherName: formData.motherName,
+                spouseName: formData.spouseName,
+                dob: formData.dob,
+                nid: formData.nid,
+                genderId: Number(formData.genderId), // Must be a number
+                image: formData.image || "",
+                base64: formData.base64 || ""
+            };
 
-        if (!initialData?.id) {
-            // Create
-            await dispatch(createEmployee(payload) as any);
-        } else {
-            // Update - If your API needs the ID in the body as well:
-            await dispatch(updateEmployee({ ...payload, id: initialData.id }) as any);
+            if (!initialData?.id) {
+                // Create
+                await dispatch(createEmployee(payload) as any);
+            } else {
+                // Update - If your API needs the ID in the body as well:
+                await dispatch(updateEmployee({ ...payload, id: initialData.id }) as any);
+            }
+
+            onSuccess(); // This triggers the refresh in Employees.tsx
+            onClose();
+        } catch (err) {
+            console.error("API Error:", err);
+        } finally {
+            setLoading(false);
         }
-        
-        onSuccess(); // This triggers the refresh in Employees.tsx
-        onClose();
-    } catch (err) {
-        console.error("API Error:", err);
-    } finally {
-        setLoading(false);
-    }
-};
+    };
 
     const handleInputChange = (name: string, value: any) => {
+        if (name === 'phoneNumber') {
+            const cleaned = value.replace(/\D/g, ''); 
+            if (cleaned.length > 11) return; 
+            value = cleaned;
+        }
 
         setFormData((prev: any) => ({ ...prev, [name]: value }));
 
@@ -132,9 +137,13 @@ const EmployeeModal: React.FC<EmployeeModalProps> = ({ isOpen, onClose, onSucces
             error = "This field is required!"; //
         } else if (name === 'email' && value && !/\S+@\S+\.\S+/.test(value)) {
             error = "Enter a valid email address!"; //
-        } else if (name === 'phoneNumber' && value && !/^\d+$/.test(value)) {
+        }else if (name === 'phoneNumber') {
+        if (!/^\d+$/.test(value)) {
             error = "Enter a valid phone number!";
+        } else if (value.length !== 11) {
+            error = "Phone number must be exactly 11 digits!";
         }
+    }
 
         setErrors((prev: any) => ({ ...prev, [name]: error }));
     };
@@ -251,7 +260,7 @@ const EmployeeModal: React.FC<EmployeeModalProps> = ({ isOpen, onClose, onSucces
                     </Form.Group>
                     <Form.Group className="form-group-item">
                         <Form.Label><span className="req">*</span> Phone Number</Form.Label>
-                        <Form.Control isInvalid={!!errors.phoneNumber} value={formData.phoneNumber} onChange={e => handleInputChange("phoneNumber", e.target.value)} placeholder="Phone Number" />
+                        <Form.Control isInvalid={!!errors.phoneNumber} value={formData.phoneNumber} onChange={e => handleInputChange("phoneNumber", e.target.value)} placeholder="Phone Number" maxLength={11}/>
                         <Form.Control.Feedback type="invalid">{errors.phoneNumber}</Form.Control.Feedback>
                     </Form.Group>
                 </div>

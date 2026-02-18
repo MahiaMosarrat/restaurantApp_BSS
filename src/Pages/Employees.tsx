@@ -60,7 +60,7 @@ const Employees: React.FC = () => {
     {
       title: '',
       key: 'avatar',
-      width: window.innerWidth < 576 ? 70 : 120,
+      width: 120,
       className: 'column-avatar',
       render: (_, record) => {
         const avatarUrl = record.user?.image
@@ -76,7 +76,8 @@ const Employees: React.FC = () => {
     {
       title: 'Name',
       key: 'name',
-     width: window.innerWidth < 576 ? 150 : 200,
+      ellipsis: true,
+      width: 'auto',
       render: (_, record) => (
         <div className="employee-name-cell">
           <span className="employee-name-text">
@@ -86,10 +87,10 @@ const Employees: React.FC = () => {
         </div>
       ),
     },
-    { title: 'Email', ellipsis: true, render: (_, record) => record.user?.email },
-    { title: 'Designation', ellipsis: true, dataIndex: 'designation' },
-    { title: 'Join Date', ellipsis: true, dataIndex: 'joinDate', render: (date) => date?.split('T')[0] },
-    { title: 'Phone', ellipsis: true, render: (_, record) => record.user?.phoneNumber },
+    { title: 'Email', ellipsis: true, width: 'auto', render: (_, record) => record.user?.email },
+    { title: 'Designation', width: 'auto', ellipsis: true, dataIndex: 'designation' },
+    { title: 'Join Date', width: 'auto', ellipsis: true, dataIndex: 'joinDate', render: (date) => date?.split('T')[0] },
+    { title: 'Phone', width: 'auto', ellipsis: true, render: (_, record) => record.user?.phoneNumber },
     {
       title: (
         <Button
@@ -140,7 +141,7 @@ const Employees: React.FC = () => {
             className: "custom-ant-pagination",
           }}
           tableLayout="fixed"
-          scroll={{ x: 1200, y: window.innerWidth < 768 ? undefined : 'calc(100vh - 350px)'}}
+          scroll={{ x: '768px', y: 'calc(100vh - 350px)' }}
           
 
         />
