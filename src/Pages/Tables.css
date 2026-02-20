@@ -1,40 +1,103 @@
 .tables-container {
-    height: 100%;
+    /* height: 100vh;  */
+    padding: 0;
+    /* overflow: hidden;  */
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.08));
 }
 
 .table-wrapper {
-    background: white;
-    border: 1px solid #f0f0f0;
+     background-color: #ffffff;
+    padding: 0;
     border-radius: 12px;
+    flex: 1;
+    /* Makes the card fill available space */
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
-    transition: all 0.2s ease-in-out;
-    filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+}
+.table-name-cell {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    /* width: 100%; */
+}
+
+.table-name-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 0 1 auto;
+    min-width: 0;
+
 }
 
 .custom-table-row:hover>td {
     background-color: #f9f9f9 !important;
 }
 
+.ant-table-content {
+    overflow-x: auto !important;
+    overflow-x: scroll !important;
+    overflow-y: hidden !important;
+}
+
+.ant-table-content::-webkit-scrollbar {
+    height: 10px !important;
+    display: block !important;
+}
+.ant-table-content::-webkit-scrollbar-thumb {
+    background: #ff350d !important;
+    border-radius: 10px;
+    border: 2px solid #ffffff;
+}
+.ant-table-content::-webkit-scrollbar-track {
+    background: #f1f1f1 !important;
+    border-radius: 10px;
+    display: block !important;
+}
+.ant-table-wrapper {
+    height: 100%;
+    /* overflow: hidden; */
+}
 .ant-table {
-    table-layout: fixed !important;
+    background: #fff;
+}
+.ant-table-thead>tr>th,
+.ant-table-thead>tr>th .ant-table-cell-content {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    overflow-wrap: normal !important;
+    /* Override the break-word seen in your demo */
 }
 
-.ant-table-body {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+.ant-table-thead>tr>th .ant-table-column-title {
+    display: block !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    color: #388e3c;
 }
 
-.ant-table-body::-webkit-scrollbar {
-    display: none;
-}
 .ant-table-thead>tr>th {
-    font-size: 18px;
-    padding: 16px;
-}
-
-.custom-table-row td {
+    min-width: 100%;
+    white-space: nowrap !important;
+    overflow-wrap: normal !important;
     font-size: 18px !important;
-    font-weight: 400!important;
+    padding: 16px;
+
+}
+.ant-table-tbody>tr>td {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    overflow-wrap: normal !important;
+    min-width: 100%;
+    font-size: 18px !important;
+    padding: 16px;
 }
 .custom-table-row:hover>td {
     background-color: #E8F5E9 !important;
@@ -42,8 +105,8 @@
 }
 
 .table-main-img-large {
-    width: 60px !important;     
-    height: 60px !important;
+    width: 58px !important;     
+    height: 58px !important;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -54,19 +117,18 @@
     font-weight: 400 !important;
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 5px;
     
-    /* Reduced heights and padding to make it smaller like the image */
-    height: 38px !important; 
-    min-height: 38px !important;
-    padding: 0 15px !important;
-    
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    min-height: 48px;
+    min-width: 60px;
     border-radius: 8px;
     border: #66bb6a 1px solid;
-    font-size: 14px !important; /* Smaller text */
-    width: auto !important; /* Don't take full width of column */
-    margin: 0 auto !important;
+    font-size: 18px;
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
 }
 
 .add-table-btn:hover {
@@ -101,20 +163,17 @@
 }
 
 .custom-ant-pagination {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
+    padding: 15px 0 !important;
+    background: #fff;
     width: 100%;
-    padding: 20px 24px !important;
-    position: relative;
+    margin: 0 !important;
+    border-top: 1px solid #f0f0f0;
 }
 
 .pagination-total-text {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    color: #666;
-    font-size: 14px;
+    margin-right: 10px;
+    font-size: 13px;
+    white-space: nowrap;
 }
 
 .custom-ant-pagination .ant-pagination-options {
@@ -135,6 +194,7 @@
     border-color: #66bb6a !important;
     border-radius: 6px !important;
 }
+
 
 .assign-plus-icon {
    width: 52px !important;
@@ -222,71 +282,44 @@
     gap: 10px;
 }
 
-/* Enable visible scrollbar for scrolling understanding at 1070px */
-@media (max-width: 1070px) {
-    .table-wrapper .ant-table-content {
-        overflow-x: auto !important;
-        display: block !important;
-    }
 
-    .table-wrapper .ant-table-content::-webkit-scrollbar {
-        display: block !important;
-        height: 8px !important;
-    }
-
-    .table-wrapper .ant-table-content::-webkit-scrollbar-thumb {
-        background: #66bb6a !important;
-        border-radius: 10px;
-    }
-}
-
-@media (max-width: 767px) {
-   .tables-container {
-        padding-bottom: 140px !important; 
-        height: auto !important;
-        overflow: visible !important;
-    }
-
-    .table-wrapper {
-        border-radius: 0 !important;
-        border: none !important;
+@media (max-width: 768px) {
+   
+    .main-content {
         padding: 0 !important;
-        overflow: visible !important; 
-        background: transparent !important;
     }
 
-    /* 2. FIX: Changed selector from .employee-ant-pagination 
-       to .custom-ant-pagination to match your JSX */
+    /* Force Pagination into a Single Row */
     .custom-ant-pagination {
         display: flex !important;
-        flex-wrap: nowrap !important;   /* Prevent wrapping to a second line */
+        flex-direction: row !important;
+        /* Force row */
+        flex-wrap: nowrap !important;
+        /* Prevent wrapping to new line */
         align-items: center !important;
-        justify-content: center !important; /* Spread items out */
-        padding: 15px 0px !important;
-        background: #fff;
-        width: 100% !important;
-        gap: 4px;  
-      
+        justify-content: center !important;
+        padding: 12px 0px !important;
+        gap: 4px;
     }
 
+    /* Shrink text and buttons to fit everything */
     .pagination-total-text {
         font-size: 16px !important;
-        white-space: nowrap;
-        margin-right: 2px;
+        margin-right: 0 !important;
     }
 
-    /* Make pagination buttons smaller to save space */
-    .custom-ant-pagination .ant-pagination-item, 
-    .custom-ant-pagination .ant-pagination-prev, 
+    .custom-ant-pagination .ant-pagination-item,
+    .custom-ant-pagination .ant-pagination-prev,
     .custom-ant-pagination .ant-pagination-next {
         min-width: 28px !important;
         height: 28px !important;
-        line-height: 26px !important;
-        margin-inline-end: 4px !important;
+        line-height: 28px !important;
+        margin: 0 !important;
     }
 
-    /* Shrink the '10 / page' selector */
+    /* Style the '10 / page' dropdown for mobile */
     .custom-ant-pagination .ant-pagination-options {
+        display: flex !important;
         margin-left: 0 !important;
     }
 
@@ -295,18 +328,10 @@
         padding: 0 4px !important;
         font-size: 11px !important;
     }
-    /* 3. Ensure the table body doesn't clip the pagination */
-    .ant-table-body {
-        max-height: none !important; 
-    }
 
-    /* Ellipsis logic to prevent table from growing too wide */
-    .ant-table-thead > tr > th,
-    .custom-table-row > td {
-        max-width: 110px !important;
-        text-overflow: ellipsis !important;
-        white-space: nowrap !important;
-        overflow: hidden;
+    /* Hide the 'Page' text in the selector if it's too cramped */
+    .ant-select-selection-item {
+        font-size: 11px !important;
     }
 }
 

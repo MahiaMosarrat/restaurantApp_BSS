@@ -7,7 +7,7 @@ import {
   DeleteOutlined,
   StarFilled
 } from '@ant-design/icons';
-import { Spin, Button, Table } from 'antd';
+import { Spin, Button, Table, Tooltip } from 'antd';
 
 import {
   fetchEmployees,
@@ -74,7 +74,7 @@ const Employees: React.FC = () => {
       },
     },
     {
-      title: 'Name',
+      title: () => <Tooltip title=" Name"><span>Name</span></Tooltip>,
       key: 'name',
       ellipsis: true,
       width: 'auto',
@@ -87,30 +87,38 @@ const Employees: React.FC = () => {
         </div>
       ),
     },
-    { title: 'Email', ellipsis: true, width: 'auto', render: (_, record) => record.user?.email },
-    { title: 'Designation', width: 'auto', ellipsis: true, dataIndex: 'designation' },
-    { title: 'Join Date', width: 'auto', ellipsis: true, dataIndex: 'joinDate', render: (date) => date?.split('T')[0] },
-    { title: 'Phone', width: 'auto', ellipsis: true, render: (_, record) => record.user?.phoneNumber },
+    { title: () => <Tooltip title="Email"><span>Email</span></Tooltip>, ellipsis: true, width: 'auto', render: (_, record) => record.user?.email },
+    { title: () => <Tooltip title="Designation "><span>Designation </span></Tooltip>, width: 'auto', ellipsis: true, dataIndex: 'designation' },
+    { title: () => <Tooltip title="Join Date"><span>Join Date</span></Tooltip>, width: 'auto', ellipsis: true, dataIndex: 'joinDate', render: (date) => date?.split('T')[0] },
+    { title: () => <Tooltip title="Phone"><span>Phone</span></Tooltip>, width: 'auto', ellipsis: true, render: (_, record) => record.user?.phoneNumber },
     {
       title: (
-        <Button
-          icon={<UserAddOutlined />}
-          onClick={() => { setEditingEmployee(null); setEmployeeModalOpen(true); }}
-          className="add-employee-btn"
-        >
-          Add Employee
-        </Button>
+        <Tooltip title="Add New Employee">
+          <Button
+            icon={<UserAddOutlined />}
+            onClick={() => { setEditingEmployee(null); setEmployeeModalOpen(true); }}
+            className="add-employee-btn"
+          >
+            Add Employee
+          </Button>
+        </Tooltip>
       ),
       key: 'actions',
       width: 180,
       render: (_, record) => (
         <div className="employee-action-container">
-          <button onClick={() => handleEditClick(record)} className="employee-action-btn edit">
-            <EditOutlined />
-          </button>
-          <button onClick={() => handleDeleteClick(record.id)} className="employee-action-btn delete">
-            <DeleteOutlined />
-          </button>
+          <Tooltip title="Edit Employee">
+            <button onClick={() => handleEditClick(record)} className="employee-action-btn edit">
+              <EditOutlined />
+            </button>
+          </Tooltip>
+
+          <Tooltip title="Delete Employee">
+            <button onClick={() => handleDeleteClick(record.id)} className="employee-action-btn delete">
+              <DeleteOutlined />
+            </button>
+          </Tooltip>
+
         </div>
       ),
     },
@@ -135,15 +143,13 @@ const Employees: React.FC = () => {
             pageSizeOptions: ['10', '20', '30', '40', '50'],
             showTotal: (total, range) => (
               <span className="pagination-total-text">
-                {range[0]}-{range[1]} of {total} items
+                {range[0]}-{range[1]} of {total}
               </span>
             ),
             className: "custom-ant-pagination",
           }}
           tableLayout="fixed"
           scroll={{ x: '768px', y: 'calc(100vh - 350px)' }}
-          
-
         />
       </div>
 

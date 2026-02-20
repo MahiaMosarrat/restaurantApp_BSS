@@ -87,16 +87,17 @@ const Foods = () => {
 
             dataIndex: 'image',
             key: 'image',
-            width: window.innerWidth < 576 ? 80 : 120,
+            width: 120,
             render: (imageName) => <div style={{ display: 'flex', justifyContent: 'center' }}><img src={imageName ? `${Image_Url}${imageName}` : 'https://placehold.co/50'} alt="food" className="table-food-img" /></div>,
 
         },
         {
-            title: () => <Tooltip title="Food Name"><span>Name</span></Tooltip>,
+            title: () => <Tooltip title=" Name"><span>Name</span></Tooltip>,
             dataIndex: 'name',
             key: 'name',
-            width: window.innerWidth < 576 ? 140 : 200,
-            render: (text) =><div className="food-name-cell">
+            width: 'auto',
+            ellipsis: true,
+            render: (text) => <div className="food-name-cell">
                 <span className="food-name-text">
                     {text}
                 </span>
@@ -106,21 +107,25 @@ const Foods = () => {
             title: () => <Tooltip title="Price"><span>Price</span></Tooltip>,
             dataIndex: 'price',
             key: 'price',
+            ellipsis: true, width: 'auto'
         },
         {
             title: () => <Tooltip title="Discount Type"><span>Discount Type</span></Tooltip>,
             dataIndex: 'discountType',
             key: 'discountType',
+            ellipsis: true, width: 'auto'
         },
         {
-            title: () => <Tooltip title="Discount Value"><span>Discount</span></Tooltip>,
+            title: () => <Tooltip title="Discount "><span>Discount</span></Tooltip>,
             dataIndex: 'discount',
             key: 'discount',
+            ellipsis: true, width: 'auto'
         },
         {
-            title: () => <Tooltip title="Final Price"><span>Discounted Price</span></Tooltip>,
+            title: () => <Tooltip title="Discounted Price"><span>Discounted Price</span></Tooltip>,
             dataIndex: 'discountPrice',
             key: 'discountPrice',
+            ellipsis: true, width: 'auto'
         },
         {
             title: (
@@ -172,15 +177,15 @@ const Foods = () => {
                         pageSizeOptions: ['10', '20', '30', '40', '50'],
                         showTotal: (total, range) => (
                             <span className="pagination-total-text">
-                                {range[0]}-{range[1]} of {total} 
+                                {range[0]}-{range[1]} of {total}
                             </span>
                         ),
                         className: "custom-ant-pagination",
 
                     }}
                     tableLayout='fixed'
-                   scroll={{ x: 1000, y: window.innerWidth < 768 ? undefined : 'calc(100vh - 350px)' }}
-                    
+                    scroll={{ x: '768px', y: 'calc(100vh - 350px)' }}
+
                 />
             </div>
 

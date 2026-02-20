@@ -15,7 +15,7 @@ import type { ITable } from '../features/tables/tablesSlice';
 import { getHeaders } from '../features/foods/foodsSlice';
 
 const Tables = () => {
-    const [scrollX, setScrollX] = useState<string | number>('100%');
+
     const dispatch = useDispatch();
     const [deleteModalOpen, setDeleteModalOpen] = useState(false);
     const [tableModalOpen, setTableModalOpen] = useState(false);
@@ -113,26 +113,36 @@ const Tables = () => {
                     />
                 </div>
             ,
-
         },
         {
-            title: 'Table Number',
+            title: () => <Tooltip title=" Table Number"><span>Table Number</span></Tooltip>,
             dataIndex: 'tableNumber',
             key: 'tableNumber',
             width: '160',
-            render: (text) => <span style={{ fontWeight: 400, color: '#0f0f10' }}>{text}</span>
+            ellipsis: true,
+            render: (tableNumber) => (
+                <div className="table-name-cell">
+                    <span className="table-name-text">
+                        {tableNumber}
+                    </span>
+                </div>
+            ),
+
         },
         {
-            title: 'Total Seats',
+            title: () => <Tooltip title="Total Seats"><span>Total Seats</span></Tooltip>, ellipsis: true,
             dataIndex: 'numberOfSeats',
             key: 'numberOfSeats',
             width: '130',
+            render: (numberOfSeats) => (
+                <span>{numberOfSeats}</span>
+            )
         },
         {
-            title: 'Booking Status',
+            title: () => <Tooltip title="Booking Status"><span>Booking Status</span></Tooltip>, ellipsis: true,
             dataIndex: 'isOccupied',
             key: 'isOccupied',
-            width: '130',
+            width: '180',
             render: (isOccupied: boolean) => (
                 <span className={`status-badge ${isOccupied ? 'occupied' : 'available'}`}>
                     {isOccupied ? 'Occupied' : 'Available'}
@@ -140,10 +150,10 @@ const Tables = () => {
             )
         },
         {
-            title: "Assigned Employees",
+            title: () => <Tooltip title="Assigned Employees "><span>Assigned Employees</span></Tooltip>, ellipsis: true,
             dataIndex: "employees",
             key: "employees",
-            width: '300',
+            width: 'auto',
             render: (employees: AssignedEmp[] = [], record) => (
                 <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
                     <Avatar.Group maxCount={4} size={45}>
@@ -200,7 +210,7 @@ const Tables = () => {
 
         {
             title: () => (
-                <Tooltip title="New Table">
+                <Tooltip title="Add New Table">
                     <Button className="add-table-btn" icon={<PlusOutlined />} onClick={handleAddClick}>
                         Add New Table
                     </Button>
@@ -208,15 +218,14 @@ const Tables = () => {
 
             ),
             key: 'actions',
-            align: 'center',
-            width: '200',
+            width: '180',
             render: (_, record) => (
                 <div className='table-action-container'>
-                    <Tooltip title="Edit Details">
+                    <Tooltip title="Edit Table">
                         <button onClick={() => handleEditClick(record)} className='table-action-btn'><EditOutlined /></button>
                     </Tooltip>
 
-                    <Tooltip title="Delete">
+                    <Tooltip title="Delete Table">
                         <button onClick={() => { setSelectedTableId(record.id); setDeleteModalOpen(true); }} className='table-action-btn'><DeleteOutlined /></button>
                     </Tooltip>
 
@@ -225,19 +234,7 @@ const Tables = () => {
         }
     ];
 
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth <= 1070) {
-                setScrollX('max-content');
-            } else {
-                setScrollX('100%');
-            }
-        };
 
-        handleResize();
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
     return (
         <div className='tables-container'>
             <div className='table-wrapper'>
@@ -245,12 +242,8 @@ const Tables = () => {
                     columns={columns}
                     dataSource={tables}
                     rowKey="id"
-                    scroll={{
-                        x: scrollX,
-                        y: window.innerWidth <= 767 ? undefined : 380
-                    }}
                     rowClassName="custom-table-row"
-                    loading={{ spinning: isLoading, indicator: <Spin size="large" /> }}
+                    loading={{ spinning: isLoading, indicator: <Spin size="small" /> }}
                     pagination={{
                         current: page,
                         pageSize: pageSize,
@@ -266,8 +259,9 @@ const Tables = () => {
                             </span>
                         ),
                         className: "custom-ant-pagination",
-
                     }}
+                    tableLayout="fixed"
+                    scroll={{ x: '768px', y: 'calc(100vh - 350px)' }}
                 />
             </div>
 

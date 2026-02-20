@@ -1,6 +1,6 @@
 /* CONTAINER & TABLE WRAPPER (Gap & Shadow)*/
 .foods-main-wrapper {
-    padding: 10px;
+    padding: 0;
     display: flex;
     flex-direction: column;
     border-radius: 12px;
@@ -41,7 +41,7 @@
 
 .foods-container-card {
     background-color: #ffffff;
-    padding-top: 16px;
+    padding: 0;
     border-radius: 12px;
     flex: 1;
     display: flex;
@@ -51,23 +51,35 @@
 
 /* TABLE HEADER & ROWS */
 .ant-table-thead>tr>th {
-    background-color: #FAFAFA !important;
+    min-width: 100%;
+    white-space: nowrap !important;
+    overflow-wrap: normal !important;
     padding: 16px !important;
-    font-size: 16px !important;
-    font-weight: 600;
-}
-
-.ant-table-tbody>tr>td {
-    padding: 12px 16px;
     font-size: 18px !important;
 }
 
+.ant-table-tbody>tr>td {
+    min-width: 100%;
+    padding:  16px;
+    font-size: 18px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    overflow-wrap: normal !important;
+}
+
+.food-name-cell {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    /* width: 100%; */
+}
 .food-name-text {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     flex: 0 1 auto;
-    font-weight: 400;
+    min-width: 0;
 }
 
 .table-food-img {
@@ -116,12 +128,12 @@
     width: 40px;
     border: none;
     cursor: pointer;
-    transition: all .5s ease-in-out;
+    /* transition: all .5s ease-in-out; */
     filter: drop-shadow(0 4px 3px rgb(0 0 0 / .07)) drop-shadow(0 2px 2px rgb(0 0 0 / .06));
     font-size: 20px;
     font-weight: 800;
     letter-spacing: 2px;
-    transition: color .5s ease-in-out;
+    /* transition: color .5s ease-in-out; */
 }
 
 .action-btn:hover {
@@ -132,15 +144,16 @@
 /*PAGINATION & DROPDOWN */
 
 .custom-ant-pagination {
-   display: flex !important;
+   /* display: flex !important;
     flex-direction: row !important;
-    flex-wrap: nowrap !important; /* Prevents stacking */
+    flex-wrap: nowrap !important; 
     justify-content: center !important;
     align-items: center !important;
-    gap: 8px;
-    padding: 15px 5px !important;
+    gap: 8px; */
+    padding: 15px 0 !important;
     background: #fff;
     width: 100%;
+    margin: 0 !important;
     border-top: 1px solid #f0f0f0;
 
 }
@@ -158,16 +171,29 @@
 }
 
 @media (max-width: 768px) {
-    .foods-main-wrapper {
-        padding-bottom: 150px !important; /* Space for mobile nav/browsers */
+     .main-content {
+        padding: 0 !important;
+    }
+  
+
+    .custom-ant-pagination {
+        display: flex !important;
+        flex-direction: row !important;
+        /* Force row */
+        flex-wrap: nowrap !important;
+        /* Prevent wrapping to new line */
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 12px 0px !important;
+        gap: 4px;
     }
 
+    /* Shrink text and buttons to fit everything */
     .pagination-total-text {
-        font-size: 11px !important;
-        margin-right: 2px !important;
+        font-size: 16px !important;
+        margin-right: 0 !important;
     }
 
-    /* Shrink the page numbers and selector to fit the row */
     .custom-ant-pagination .ant-pagination-item,
     .custom-ant-pagination .ant-pagination-prev,
     .custom-ant-pagination .ant-pagination-next {
@@ -177,27 +203,22 @@
         margin: 0 !important;
     }
 
+    /* Style the '10 / page' dropdown for mobile */
     .custom-ant-pagination .ant-pagination-options {
         display: flex !important;
-        margin-left: 5px !important;
+        margin-left: 0 !important;
     }
 
     .custom-ant-pagination .ant-select-selector {
         height: 28px !important;
+        padding: 0 4px !important;
+        font-size: 11px !important;
+    }
+
+    /* Hide the 'Page' text in the selector if it's too cramped */
+    .ant-select-selection-item {
         font-size: 11px !important;
     }
 }
 
-@media (max-width: 576px) {
-    .table-food-img {
-        width: 45px !important;
-        height: 45px !important;
-    }
 
-    .ant-table-tbody > tr > td {
-        padding: 8px 4px !important; /* Tighter padding to show more columns */
-        font-size: 14px !important;
-    }
-    
-
-}

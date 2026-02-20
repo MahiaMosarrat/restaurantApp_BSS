@@ -109,11 +109,11 @@
 .custom-checkbox {
     appearance: none;
     -webkit-appearance: none;
-    width: 20px !important;
-    height: 20px !important;
-    border: 2px solid #d7d8d7;
+    width: 15px !important;
+    height: 16px !important;
+    border: 1px solid #d7d8d7;
     border-radius: 30%;
-    background-color: #fff;
+    background-color: rgb(243 244 246);
     cursor: pointer;
     display: grid;
     place-content: center;
